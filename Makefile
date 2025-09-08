@@ -2,56 +2,99 @@
 #                               MAKEFILE CONFIG                                #
 # **************************************************************************** #
 
+# Program name
 NAME        = so_long
 
 # Compiler and flags
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -Iinclude -Iminilibx -g
+CFLAGS      = -Wall -Wextra -Werror -g \
+				$(SO_LONG_INC) \
+				$(FT_PRINTF_INC) \
+				$(GET_NEXT_LINE_INC) \
+				$(LIBFT_INC) 
 
-# Source folders
+# Source and object directories
 SRC_DIR     = src
+OBJ_DIR     = objects
+
+# External libraries
+FT_PRINTF_DIR		= libs/ft_printf
+GET_NEXT_LINE_DIR	= libs/get_next_line
+LIBFT_DIR			= libs/libft
+
+FT_PRINTF_LIB		= $(FT_PRINTF_DIR)/ft_printf.a
+GET_NEXT_LINE_LIB	= $(GET_NEXT_LINE_DIR)/get_next_line.a
+LIBFT_LIB			= $(LIBFT_DIR)/libft.a
+
+# Include paths
+SO_LONG_INC			= -Iincludes
+FT_PRINTF_INC		= -I$(FT_PRINTF_DIR)/includes
+GET_NEXT_LINE_INC 	= -I$(GET_NEXT_LINE_DIR)/includes
+LIBFT_INC			= -I$(LIBFT_DIR)/includes
 
 # Source files
 SRC_FILES = \
 	$(SRC_DIR)/main.c \
+	$(SRC_DIR)/parser/is_filename_valid.c \
+	$(SRC_DIR)/parser/parser.c \
+	$(SRC_DIR)/utils/ft_strclen.c \
+	$(SRC_DIR)/utils/ft_exit_error.c \
 
-# Object files
-OBJ_FILES   = $(SRC_FILES:.c=.o)
-
-# MiniLibX
-MLX_DIR     = minilibx
-MLX_LIB     = $(MLX_DIR)/libmlx.a
-MLX_FLAGS   = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
+# Convert src/file.c → objects/src/file.o
+OBJ_FILES   = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
 
 # **************************************************************************** #
 #                                MAKE RULES                                    #
 # **************************************************************************** #
 
+# Default target
 all: $(NAME)
 
-$(NAME): $(OBJ_FILES) $(MLX_LIB)
-	$(CC) $(CFLAGS) $(OBJ_FILES) $(MLX_FLAGS) -o $(NAME)
+# Linking the final executable
+$(NAME): $(OBJ_FILES) $(FT_PRINTF_LIB) $(LIBFT_LIB) $(GET_NEXT_LINE_LIB)
+	$(CC) $(CFLAGS) $(OBJ_FILES) \
+		$(FT_PRINTF_LIB) \
+		$(GET_NEXT_LINE_LIB) \
+		$(LIBFT_LIB) \
+		-o $(NAME)
 
-$(MLX_LIB):
-	$(MAKE) -C $(MLX_DIR)
-
-%.o: %.c
+# Rule to compile each .c file into a corresponding .o file in the objects/ dir
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
-	rm -f $(OBJ_FILES)
-	$(MAKE) -C $(MLX_DIR) clean
+# Build the external libraries
+$(FT_PRINTF_LIB):
+	@$(MAKE) -C $(FT_PRINTF_DIR)
+$(LIBFT_LIB):
+	@$(MAKE) -C $(LIBFT_DIR)
+$(GET_NEXT_LINE_LIB):
+	@$(MAKE) -C $(GET_NEXT_LINE_DIR)
 
-fclean: clean
-	rm -f $(NAME)
-
-re: fclean all
-
+# Run valgrind test
 valgrind: $(NAME)
 	valgrind --leak-check=full \
 	         --show-leak-kinds=all \
 	         --track-origins=yes \
 	         --log-file=valgrind.log \
 	         ./$(NAME) maps/map.ber
+
+# clean: Clean object files only
+# fclean: Clean all (objects + binaries + libs)
+# re: Full rebuild
+# PHONY: Declare phony targets to avoid conflicts with files named like these
+clean:
+	rm -rf $(OBJ_DIR)
+	@$(MAKE) -C $(FT_PRINTF_DIR) clean
+	@$(MAKE) -C $(LIBFT_DIR) clean
+	@$(MAKE) -C $(GET_NEXT_LINE_DIR) clean
+
+fclean: clean
+	rm -f $(NAME)
+	@$(MAKE) -C $(FT_PRINTF_DIR) fclean
+	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@$(MAKE) -C $(GET_NEXT_LINE_DIR) fclean
+
+re: fclean all
 
 .PHONY: all clean fclean re valgrind

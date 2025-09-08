@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_exit_error.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 18:00:26 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/08 18:36:02 by benes-al         ###   ########.fr       */
+/*   Created: 2025/09/08 14:26:36 by benes-al          #+#    #+#             */
+/*   Updated: 2025/09/08 14:41:05 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
-{
-	t_game	game;
-	
-	if (argc != 2)
-		ft_exit_error("Usage: ./so_long <map.name>.ber");
-	is_file_name_valid(argv[1]);
-	ft_bzero(&game, sizeof(game));
-	is_map_valid(argv[1], &game);
-	
-	/* -terminar de ler tudo com getnexline antes 
-	de fechar rograma para nao ter eakes
-	-usar split na linha pra contruir a matrix do jogo
-	-strclen e a funccao
-	- escrever ft_strcspn()
-	code .*/
+void	ft_exit_error(char *error_message)
+{	
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(error_message, 2);
+	ft_putstr_fd("\n", 2);
+	exit(EXIT_FAILURE);
 }
