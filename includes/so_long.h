@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:53:19 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/08 18:35:53 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/09 19:59:09 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ typedef struct s_map
 {
 	int		fd;
 	//char	**grid;
-	//int		rows;
-	int		cols;
+	size_t		rows;
+	size_t		cols;
 }				t_map;
 /* 
 typedef struct s_img
