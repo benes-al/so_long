@@ -15,6 +15,8 @@ CFLAGS      = -Wall -Wextra -Werror -g \
 
 # Source and object directories
 SRC_DIR     = src
+PAR_DIR		= src/parser 
+UTI_DIR		= src/utils
 OBJ_DIR     = objects
 
 # External libraries
@@ -35,10 +37,12 @@ LIBFT_INC			= -I$(LIBFT_DIR)/includes
 # Source files
 SRC_FILES = \
 	$(SRC_DIR)/main.c \
-	$(SRC_DIR)/parser/is_filename_valid.c \
-	$(SRC_DIR)/parser/parser.c \
-	$(SRC_DIR)/utils/ft_strclen.c \
-	$(SRC_DIR)/utils/ft_exit_error.c \
+	$(SRC_DIR)/is_valid_filename.c \
+	$(PAR_DIR)/is_valid_grid_size.c  \
+	$(PAR_DIR)/is_valid_map.c  \
+	$(UTI_DIR)/map_in_one_line.c  \
+	$(UTI_DIR)/ft_strclen.c \
+	$(UTI_DIR)/ft_exit_error.c
 
 # Convert src/file.c → objects/src/file.o
 OBJ_FILES   = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC_FILES))

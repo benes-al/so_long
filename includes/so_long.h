@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:53:19 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/09 19:59:09 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/10 22:43:28 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@
  */
 typedef struct s_map
 {
-	int		fd;
-	//char	**grid;
+	int			fd;
+	//char		**grid;
 	size_t		rows;
 	size_t		cols;
 }				t_map;
@@ -87,14 +87,17 @@ typedef struct s_game
 /*                               PARSER                                       */
 /******************************************************************************/
 
-void	is_file_name_valid(char *map_file);
-void	is_map_valid(char *map_file, t_game *game);
-size_t	ft_strclen(const char *str, const char c);
+void	creat_map(char *map_file, t_game *game);
+void	is_valid_file_name(char *map_file);
+void	is_valid_map(char *map_file, t_game *game);
+void	is_valid_grid_size(char *map_file, t_game *game);
+void	map_in_one_line(char *map_file, t_game *game);
 
 /******************************************************************************/
 /*                               UTILS                                        */
 /******************************************************************************/
 
 void	ft_exit_error(char *error_message);
+size_t	ft_strclen(const char *str, const char c);
 
 #endif

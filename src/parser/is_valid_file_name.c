@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   is_valid_file_name.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 18:00:26 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/10 22:19:20 by benes-al         ###   ########.fr       */
+/*   Created: 2025/09/08 13:31:33 by benes-al          #+#    #+#             */
+/*   Updated: 2025/09/10 22:19:41 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "stdio.h"
 
-int	main(int argc, char **argv)
+void	is_valid_file_name(char *map_file)
 {
-	t_game	game;
+	size_t size;
 	
-	if (argc != 2)
-		ft_exit_error("Usage: ./so_long <map.name>.ber");
-	is_valid_file_name(argv[1]);
-	ft_bzero(&game, sizeof(game));
-	is_valid_map(argv[1], &game);
-	/* -terminar de ler tudo com getnexline antes 
-	de fechar rograma para nao ter eakes
-	-usar split na linha pra contruir a matrix do jogo
-	-strclen e a funccao
-	- escrever ft_strcspn()
-	code .*/
+	size = ft_strlen(map_file);
+	if (size <= 4)
+		ft_exit_error("Map file name is invalid.");
+	if (!ft_strnstr(map_file + (size - 4) , ".ber", 4))
+		ft_exit_error("Map file extension is invalid.");
 }

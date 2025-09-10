@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   map_in_one_line.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 14:52:38 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/09 19:49:29 by benes-al         ###   ########.fr       */
+/*   Created: 2025/09/10 19:50:06 by benes-al          #+#    #+#             */
+/*   Updated: 2025/09/10 19:52:06 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	is_map_valid(char *map_file, t_game *game)
+void	map_in_one_line(char *map_file, t_game *game)
 {
+	char	*map_in_one_line;
 	char	*line;
+	char	*tmp;
 
 	game->map.fd = open(map_file, O_RDONLY);
 	if (game->map.fd == -1)
-		ft_exit_error("Couldn't open requeste map file");
+		ft_exit_error("Couldn't open requeste map file.");
 	line = get_next_line(game->map.fd);
-	game->map.cols = ft_strclen(line, '\n');
+	tmp = ft_strdup("");
 	while (line)
 	{
-		if (ft_strclen(line, '\n') != game->map.cols)
-		{
-			free (line); 
-			ft_exit_error("Map is not a rectangle");
-		}
+		map_in_one_line = ft_strjoin(tmp, line);
+		free(tmp);
+		tmp = map_in_one_line;
 		free(line);
 		line = get_next_line(game->map.fd);
 	}
+	close(game->map.fd);
 }
