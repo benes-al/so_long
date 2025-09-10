@@ -2,3 +2,4 @@ so_long
 *.o
 *.h.gch
 .vscode/
+*.ber
