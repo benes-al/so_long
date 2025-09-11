@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strclen.c                                       :+:      :+:    :+:   */
+/*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 15:37:34 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/11 19:43:26 by benes-al         ###   ########.fr       */
+/*   Created: 2025/09/10 19:29:14 by benes-al          #+#    #+#             */
+/*   Updated: 2025/09/11 21:58:48 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-size_t	ft_strclen(const char *str, const char c)
+void	create_map(char *map_file, t_game *game)
 {
-	size_t	len;
+	char	*line;
 
-	len = 0;
-	while (str && str[len] && str[len] != c)
-		len++;
-	return (len);
+	line = file_in_one_line(map_file, game);
+	if (game->map.grid)
+		ft_free_array(game->map.grid);
+	game->map.grid = ft_split(line, '\n');
+	free(line);
 }

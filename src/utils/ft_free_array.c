@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   creat_map.c                                        :+:      :+:    :+:   */
+/*   ft_free_array.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 19:29:14 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/10 22:34:09 by benes-al         ###   ########.fr       */
+/*   Created: 2025/09/11 15:24:52 by benes-al          #+#    #+#             */
+/*   Updated: 2025/09/11 15:25:34 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	creat_map(char *map_file, t_game *game)
+void	ft_free_array(char **array)
 {
-	char	*line;
-	char	**map;
-	
-	line = map_in_one_line(map_file, game);
-	map = ft_split(line, '\n');
-	
+	int	i;
+
+	i = 0;
+	if (!array)
+		return ;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }

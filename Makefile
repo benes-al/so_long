@@ -15,8 +15,6 @@ CFLAGS      = -Wall -Wextra -Werror -g \
 
 # Source and object directories
 SRC_DIR     = src
-PAR_DIR		= src/parser 
-UTI_DIR		= src/utils
 OBJ_DIR     = objects
 
 # External libraries
@@ -34,48 +32,53 @@ FT_PRINTF_INC		= -I$(FT_PRINTF_DIR)/includes
 GET_NEXT_LINE_INC 	= -I$(GET_NEXT_LINE_DIR)/includes
 LIBFT_INC			= -I$(LIBFT_DIR)/includes
 
-# Source files
+# Source files (paths relative to SRC_DIR or full path)
 SRC_FILES = \
-	$(SRC_DIR)/main.c \
-	$(SRC_DIR)/is_valid_filename.c \
-	$(PAR_DIR)/is_valid_grid_size.c  \
-	$(PAR_DIR)/is_valid_map.c  \
-	$(UTI_DIR)/map_in_one_line.c  \
-	$(UTI_DIR)/ft_strclen.c \
-	$(UTI_DIR)/ft_exit_error.c
+	are_valid_characters.c \
+	create_map.c \
+	is_map_enclosed_by_walls.c \
+	is_valid_file_name.c \
+	is_valid_grid_size.c \
+	is_valid_map.c \
+	is_valid_path.c \
+	file_in_one_line.c \
+	ft_exit_error.c \
+	ft_free_array.c  \
+	ft_strclen.c \
+	main.c
 
-# Convert src/file.c → objects/src/file.o
-OBJ_FILES   = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
+# Convert source files to object files with prefix
+OBJS = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
+
+# Tell make where to find source files
+VPATH = src src/parser src/utils
 
 # **************************************************************************** #
 #                                MAKE RULES                                    #
 # **************************************************************************** #
 
-# Default target
 all: $(NAME)
 
-# Linking the final executable
-$(NAME): $(OBJ_FILES) $(FT_PRINTF_LIB) $(LIBFT_LIB) $(GET_NEXT_LINE_LIB)
-	$(CC) $(CFLAGS) $(OBJ_FILES) \
+$(NAME): $(OBJS) $(FT_PRINTF_LIB) $(LIBFT_LIB) $(GET_NEXT_LINE_LIB)
+	$(CC) $(CFLAGS) $(OBJS) \
 		$(FT_PRINTF_LIB) \
 		$(GET_NEXT_LINE_LIB) \
 		$(LIBFT_LIB) \
 		-o $(NAME)
 
-# Rule to compile each .c file into a corresponding .o file in the objects/ dir
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Build the external libraries
 $(FT_PRINTF_LIB):
 	@$(MAKE) -C $(FT_PRINTF_DIR)
+
 $(LIBFT_LIB):
 	@$(MAKE) -C $(LIBFT_DIR)
+
 $(GET_NEXT_LINE_LIB):
 	@$(MAKE) -C $(GET_NEXT_LINE_DIR)
 
-# Run valgrind test
 valgrind: $(NAME)
 	valgrind --leak-check=full \
 	         --show-leak-kinds=all \
@@ -83,10 +86,6 @@ valgrind: $(NAME)
 	         --log-file=valgrind.log \
 	         ./$(NAME) maps/map.ber
 
-# clean: Clean object files only
-# fclean: Clean all (objects + binaries + libs)
-# re: Full rebuild
-# PHONY: Declare phony targets to avoid conflicts with files named like these
 clean:
 	rm -rf $(OBJ_DIR)
 	@$(MAKE) -C $(FT_PRINTF_DIR) clean

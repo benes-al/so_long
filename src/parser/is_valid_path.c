@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   floodfill.c                                        :+:      :+:    :+:   */
+/*   is_valid_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/02 15:42:55 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/02 18:32:14 by benes-al         ###   ########.fr       */
+/*   Created: 2025/09/11 22:24:23 by benes-al          #+#    #+#             */
+/*   Updated: 2025/09/11 22:24:26 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "so_long.h"
+
+
+void is_valid_path(t_game *game)
+{
+	
+}
+
 
 void	floodfill(char **map, int x, int y)
 {
