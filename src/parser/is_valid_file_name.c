@@ -6,19 +6,19 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 13:31:33 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/11 20:50:37 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/14 16:57:19 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	is_valid_file_name(char *map_file, t_game *game)
+void	is_valid_file_name(t_game *game)
 {
 	size_t	size;
 
-	size = ft_strlen(map_file);
+	size = ft_strlen(game->map_file);
 	if (size <= 4)
 		ft_exit_error("Map file name is invalid.", game);
-	if (!ft_strnstr(map_file + (size - 4), ".ber", 4))
+	if (!ft_strnstr(game->map_file + (size - 4), ".ber", 4))
 		ft_exit_error("Map file extension is invalid.", game);
 }

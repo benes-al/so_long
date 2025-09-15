@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 18:00:26 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/15 16:40:12 by benes-al         ###   ########.fr       */
+/*   Created: 2025/09/14 16:35:33 by benes-al          #+#    #+#             */
+/*   Updated: 2025/09/14 17:17:41 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int argc, char **argv)
+void	check_args(int argc)
 {
-    t_game game;
-
-    check_args(argc);
-	parse_map(argv[1], &game);
-    init_game(&game);
-    run_game(&game);
-	return (0);
+	if (argc != 2)
+		ft_exit_error("Usage: ./so_long <map.name>.ber", NULL);
 }

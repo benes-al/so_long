@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:14:18 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/11 21:58:05 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/13 03:16:29 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ char	*file_in_one_line(char *map_file, t_game *game)
 	if (fd == -1)
 		ft_exit_error("Couldn't open requeste map file.", game);
 	line = get_next_line(fd);
+	if (ft_strclen(line, '\n') == 0)
+	{
+		free(line);
+		ft_exit_error("Map in empty.", game);
+	}
 	tmp = ft_strdup("");
 	while (line)
 	{

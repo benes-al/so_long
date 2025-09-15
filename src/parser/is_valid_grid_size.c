@@ -6,37 +6,23 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:52:38 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/11 19:45:10 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/13 11:57:46 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	is_valid_grid_size(char *map_file, t_game *game)
+void	is_valid_grid_size(t_game *game)
 {
-	char	*line;
-	int		fd;
+	int	j;
 
-	fd = open(map_file, O_RDONLY);
-	if (fd == -1)
-		ft_exit_error("Couldn't open requeste map file.", game);
-	line = get_next_line(fd);
-	game->map.cols = ft_strclen(line, '\n');
-	if (game->map.cols == 0)
+	j = 0;
+	game->map.cols = ft_strlen(game->map.grid[j]);
+	while (game->map.grid[j])
 	{
-		free(line);
-		ft_exit_error("Map in empty.", game);
-	}
-	while (line)
-	{
-		if (ft_strclen(line, '\n') != game->map.cols)
-		{
-			free (line);
+		if (ft_strlen(game->map.grid[j]) != game->map.cols)
 			ft_exit_error("Map is not a rectangle.", game);
-		}
-		game->map.rows++;
-		free(line);
-		line = get_next_line(fd);
+		j++;
 	}
-	close (fd);
+	game->map.rows = j;
 }

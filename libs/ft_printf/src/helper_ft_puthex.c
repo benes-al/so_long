@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/03 13:04:38 by benes-al          #+#    #+#             */
-/*   Updated: 2025/05/03 18:38:58 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/12 15:49:52 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int	ft_puthex(unsigned int nbr, char format)
 		return (ft_putchar('0'));
 	if (nbr > 15)
 		count += ft_puthex(nbr / 16, format);
-	if (nbr % 16 >= 0 && nbr % 16 <= 9 && format == 'X')
+	if (nbr % 16 <= 9 && format == 'X')
 		return (count += ft_putchar(hex_uppercase[nbr % 16]));
 	else if (nbr % 16 >= 10 && nbr % 16 <= 15 && format == 'X')
 		return (count += ft_putchar(hex_uppercase[nbr % 16]));
-	else if (nbr % 16 >= 0 && nbr % 16 <= 9 && format == 'x')
+	else if (nbr % 16 <= 9 && format == 'x')
 		return (count += ft_putchar(hex_lowercase[nbr % 16]));
 	else if (nbr % 16 >= 10 && nbr % 16 <= 15 && format == 'x')
 		return (count += ft_putchar(hex_lowercase[nbr % 16]));
