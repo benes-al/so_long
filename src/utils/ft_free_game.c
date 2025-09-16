@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 13:25:51 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/15 13:29:05 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/16 16:14:01 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ static void	ft_free_textures(t_game *game)
 		mlx_destroy_image(game->mlx, game->img_P[0].img);
 	if (game->img_P[1].img)
 		mlx_destroy_image(game->mlx, game->img_P[1].img);
+	if (game->img_P[2].img)
+		mlx_destroy_image(game->mlx, game->img_P[2].img);
+	if (game->img_P[3].img)
+		mlx_destroy_image(game->mlx, game->img_P[3].img);
 }
 
 void	ft_free_game(t_game *game)

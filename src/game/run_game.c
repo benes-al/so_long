@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/14 17:43:17 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/15 19:30:25 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/16 17:19:13 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ static void	print_moves(t_game *game)
 static void	check_move(t_game *game, int x, int y)
 {
     if (game->map.grid[y][x] == WALL)
-    {
 		return ;
-	}
 	print_moves(game);
 	if (game->map.grid[y][x] == COLLECTIBLE)
 	{
@@ -41,7 +39,7 @@ static void	check_move(t_game *game, int x, int y)
 		game->collectible_count--;
 	}
 	if (game->map.grid[y][x] == EXIT && !game->collectible_count)
-		ft_exit_error("Congratulations! You have a friend to climb with! 🧗", game);
+		ft_exit_game("Congratulations! You have a friend to climb with! 🧗", game);
 	if (game->map.grid[y][x] == EXIT)
 		ft_printf("You are not T'alex R'honnold\n");
 	game->player.next_pos = (t_player_pos){y, x};
@@ -71,7 +69,7 @@ int	key_press(int keycode, t_game *game)
 	{	
 		game->player.img_index = PULLED_BY_ROPE;
 		put_tile(game);
-		check_move(game, game->player.current_pos.x, game->player.current_pos.y - 1);
+		check_move(game, game->player.current_pos.x, game->player.current_pos.y + 1);
 	}
 	else if (keycode == KEY_D || keycode == KEY_RIGHT)
 	{

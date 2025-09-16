@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:53:19 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/15 19:19:35 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/16 16:26:53 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define P1_XPM		"textures/P1.xpm"
 # define P2_XPM		"textures/P2.xpm"
 # define P3_XPM		"textures/P3.xpm"
+# define P4_XPM		"textures/P4.xpm"
 
 /******************************************************************************/
 /*                               ENUMS                                        */
@@ -76,7 +77,8 @@ typedef enum e_img_index
 {
 	RUN_RIGHT		= 0,
 	RUN_LEFT		= 1,
-	PULLED_BY_ROPE	= 2
+	PULLED_BY_ROPE	= 2,
+	RUN_RIGHT_2		= 3,
 }	t_img_index;
 
 /******************************************************************************/
@@ -129,7 +131,7 @@ typedef struct s_game
 	t_img		img_0;
 	t_img		img_E;
 	t_img		img_C;
-	t_img		img_P[3];
+	t_img		img_P[4];
 	int			x;
 	int			y;
 }	t_game;
