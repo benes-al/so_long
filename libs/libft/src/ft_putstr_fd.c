@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 14:44:32 by benes-al          #+#    #+#             */
-/*   Updated: 2025/04/19 16:17:33 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/17 20:49:38 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,3 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
-/*
-int	main(void)
-{
-	int	fd;
-
-	fd = open("test.txt", O_WRONLY);
-	ft_putstr_fd("casa", fd);
-}*/

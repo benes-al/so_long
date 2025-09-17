@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 11:56:06 by benes-al          #+#    #+#             */
-/*   Updated: 2025/04/15 10:33:34 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/17 20:48:19 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,3 @@ void	ft_bzero(void *s, size_t len)
 		i++;
 	}
 }
-/*
-int	main(void)
-{
-	char	test[10];
-	int		i;
-
-	i = 0;
-	ft_bzero(test, 10);
-	while (test[i])
-	{
-		printf("%c", test[i]);
-		i++;
-	}
-	printf("\n");
-}*/

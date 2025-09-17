@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:37:09 by benes-al          #+#    #+#             */
-/*   Updated: 2025/04/16 19:47:05 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/17 20:53:27 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,3 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (NULL);
 }
-/*
-int	main(void)
-{
-	char s[4] = "casa";
-
-	printf("%s", strchr(s, 'c'));
-}*/

@@ -38,7 +38,14 @@ MLX_INC				= -I$(MLX_DIR)
 
 # Source files (paths relative to SRC_DIR or full path)
 SRC_FILES = \
+	check_move.c \
 	init_game.c \
+	key_press.c \
+	load_textures.c \
+	print_moves.c \
+	put_game_tile.c \
+	put_player_tile.c \
+	render_map.c \
 	render_move.c \
 	run_game.c \
 	are_valid_characters.c \

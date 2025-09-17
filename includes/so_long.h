@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:53:19 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/17 11:03:21 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/17 20:44:06 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-# include <stdbool.h>
+# include <stdbool.h>	
 # include <sys/time.h>
 
 /******************************************************************************/
@@ -55,12 +55,12 @@
 
 typedef enum e_tile
 {
-	WALL        = '1',
-	SPACE       = '0',
-	EXIT        = 'E',
-	COLLECTIBLE = 'C',
-	PLAYER      = 'P',
-	VISITED     = 'V'
+	WALL		= '1',
+	SPACE		= '0',
+	EXIT		= 'E',
+	COLLECTIBLE	= 'C',
+	PLAYER		= 'P',
+	VISITED		= 'V'
 }	t_tile;
 
 typedef enum e_key
@@ -108,7 +108,6 @@ typedef struct s_img
 	int		h;
 }	t_img;
 
-
 typedef struct s_player
 {
 	t_player_pos	current_pos;
@@ -125,26 +124,32 @@ typedef struct s_game
 	void		*mlx_window;
 	t_map		map;
 	int			moves;
+	int			false_count_moves;
 	t_player	player;
 	int			player_count;
 	int			exit_count;
 	int			collectible_count;
-	t_img		img_1;
-	t_img		img_0;
-	t_img		img_E;
-	t_img		img_C;
-	t_img		img_P[5];
+	t_img		img_wall;
+	t_img		img_space;
+	t_img		img_exit;
+	t_img		img_collectible;
+	t_img		img_player[6];
 	int			x;
 	int			y;
-	long		win_time_start;
-	long		time_now;
 }	t_game;
 
 /******************************************************************************/
 /*                               GAME                                         */
 /******************************************************************************/
 
+void	check_move(t_game *game, int x, int y);
 void	init_game(t_game *game);
+int		key_press(int keycode, t_game *game);
+void	load_textures(t_game *g);
+void	print_moves(t_game *game);
+void	put_tile(t_game *game, char tile, t_player_pos point, int img_index);
+void	put_player_tile(t_game *game);
+void	render_map(t_game *game, int i, int j);
 void	render_move(t_game *game, char current, char next, t_player *player);
 void	run_game(t_game *game);
 
@@ -173,4 +178,5 @@ int		ft_exit_game(char *message, t_game *game);
 void	ft_free_array(char **array);
 void	ft_free_game(t_game *game);
 size_t	ft_strclen(const char *str, const char c);
+
 #endif

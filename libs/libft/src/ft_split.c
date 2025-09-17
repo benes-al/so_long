@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 18:28:05 by benes-al          #+#    #+#             */
-/*   Updated: 2025/04/26 10:12:25 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/17 20:52:49 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,20 +92,3 @@ char	**ft_split(char *s, char c)
 	strs[i] = 0;
 	return (strs);
 }
-
-/* 
-#include <stdio.h>
-
-int	main(void)
-{
-	char *str = "     hello    h e ";
-	char **arr = ft_split(str, ' ');
-
-	int i = 0;
-	while (i < ft_wrdcnt(str, ' '))
-	{
-		printf("%s\n", arr[i]);
-		i++;
-	}
-	ft_free(arr, (i));
-} */

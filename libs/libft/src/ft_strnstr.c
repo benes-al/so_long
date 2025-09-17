@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 11:40:52 by benes-al          #+#    #+#             */
-/*   Updated: 2025/04/26 10:13:31 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/17 20:51:47 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,3 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (NULL);
 }
-
-/* 
-#include <bsd/string.h>
-#include <stdio.h>
-
-int	main(void)
-{
-	char *big = "42411013";
-	char *little = "13";
-
-	printf("%s\n", ft_strnstr(big, little, 9));
-	printf("%s", strnstr(big, little, 9));
-} */

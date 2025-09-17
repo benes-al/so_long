@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   put_player_tile.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 18:00:26 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/17 20:39:07 by benes-al         ###   ########.fr       */
+/*   Created: 2025/09/17 19:08:34 by benes-al          #+#    #+#             */
+/*   Updated: 2025/09/17 21:50:25 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	put_player_tile(t_game *game)
 {
-	t_game	game;
-
-	check_args(argc);
-	parse_map(argv[1], &game);
-	init_game(&game);
-	run_game(&game);
-	return (0);
+	mlx_put_image_to_window(game->mlx, game->mlx_window,
+		game->img_player[game->player.img_index].img,
+		game->player.current_pos.x * TILE_SIZE,
+		game->player.current_pos.y * TILE_SIZE);
 }

@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 18:20:36 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/13 02:27:47 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/17 20:49:15 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,3 @@ size_t	ft_strlen(const char *str)
 	}
 	return (i);
 }
-/*
-int main(void) 
-{
-	char name[] = "Hello :)";
-    
-	printf("Length: %zu\n", ft_strlen(name));
-}*/

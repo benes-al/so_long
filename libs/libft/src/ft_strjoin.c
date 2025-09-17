@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 10:27:31 by benes-al          #+#    #+#             */
-/*   Updated: 2025/04/18 13:50:48 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/17 20:52:31 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	return (s);
 }
-/*
-int	main(void)
-{
-	char	*s1 = "casa";
-	char	*s2 = "mento";
-
-	printf("%s", ft_strjoin(s1, s2));
-}*/

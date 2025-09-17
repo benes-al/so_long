@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_moves.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/25 18:00:26 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/17 20:39:07 by benes-al         ###   ########.fr       */
+/*   Created: 2025/09/17 18:56:05 by benes-al          #+#    #+#             */
+/*   Updated: 2025/09/17 19:12:58 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	print_moves(t_game *game)
 {
-	t_game	game;
-
-	check_args(argc);
-	parse_map(argv[1], &game);
-	init_game(&game);
-	run_game(&game);
-	return (0);
+	ft_putstr_fd("Moves: ", 1);
+	ft_putnbr_fd(++game->moves, 1);
+	ft_putchar_fd('\n', 1);
 }
