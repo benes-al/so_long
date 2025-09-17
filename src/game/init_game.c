@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 12:01:31 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/16 17:02:45 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/17 09:41:16 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	render_map(t_game *game, int i, int j)
 			else if (game->map.grid[i][j] == COLLECTIBLE)
 				tile = &game->img_C;
 			else if (game->map.grid[i][j] == PLAYER)
-				tile = &game->img_P[3];
+				tile = &game->img_P[1];
 			mlx_put_image_to_window(game->mlx, game->mlx_window, tile->img,
 				j * TILE_SIZE, i * TILE_SIZE);
 		}
@@ -48,9 +48,12 @@ static void load_textures(t_game *g)
 	g->img_P[1].img = mlx_xpm_file_to_image(g->mlx, P2_XPM, &g->x, &g->y);
 	g->img_P[2].img = mlx_xpm_file_to_image(g->mlx, P3_XPM, &g->x, &g->y);
 	g->img_P[3].img = mlx_xpm_file_to_image(g->mlx, P4_XPM, &g->x, &g->y);
+	g->img_P[4].img = mlx_xpm_file_to_image(g->mlx, P5_XPM, &g->x, &g->y);
+	g->img_P[5].img = mlx_xpm_file_to_image(g->mlx, P6_XPM, &g->x, &g->y);
 	if (!g->img_1.img || !g->img_0.img || !g->img_E.img
 		|| !g->img_C.img || !g->img_P[0].img
-		||!g->img_P[1].img || !g->img_P[2].img || !g->img_P[3].img)
+		|| !g->img_P[1].img || !g->img_P[2].img
+		|| !g->img_P[3].img || !g->img_P[4].img || !g->img_P[4].img)
 		ft_exit_error("Couldn't load textures.", g);
 }
 

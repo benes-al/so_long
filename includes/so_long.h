@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:53:19 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/16 16:26:53 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/17 11:03:21 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdbool.h>
+# include <sys/time.h>
 
 /******************************************************************************/
 /*                              External libraries                            */
@@ -45,6 +46,8 @@
 # define P2_XPM		"textures/P2.xpm"
 # define P3_XPM		"textures/P3.xpm"
 # define P4_XPM		"textures/P4.xpm"
+# define P5_XPM		"textures/P5.xpm"
+# define P6_XPM		"textures/P6.xpm"
 
 /******************************************************************************/
 /*                               ENUMS                                        */
@@ -76,9 +79,9 @@ typedef enum e_key
 typedef enum e_img_index
 {
 	RUN_RIGHT		= 0,
-	RUN_LEFT		= 1,
-	PULLED_BY_ROPE	= 2,
-	RUN_RIGHT_2		= 3,
+	RUN_LEFT		= 2,
+	PULLED_BY_ROPE	= 4,
+	FALSE_EXIT_FACE	= 5,
 }	t_img_index;
 
 /******************************************************************************/
@@ -126,14 +129,15 @@ typedef struct s_game
 	int			player_count;
 	int			exit_count;
 	int			collectible_count;
-	//int		spaces;
 	t_img		img_1;
 	t_img		img_0;
 	t_img		img_E;
 	t_img		img_C;
-	t_img		img_P[4];
+	t_img		img_P[5];
 	int			x;
 	int			y;
+	long		win_time_start;
+	long		time_now;
 }	t_game;
 
 /******************************************************************************/
