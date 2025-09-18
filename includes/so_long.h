@@ -6,7 +6,7 @@
 /*   By: benes-al <benes-al@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:53:19 by benes-al          #+#    #+#             */
-/*   Updated: 2025/09/17 20:44:06 by benes-al         ###   ########.fr       */
+/*   Updated: 2025/09/18 15:13:22 by benes-al         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,17 +139,22 @@ typedef struct s_game
 }	t_game;
 
 /******************************************************************************/
-/*                               GAME                                         */
+/*                               INIT_GAME                                    */
+/******************************************************************************/
+
+void	init_game(t_game *game);
+void	load_textures(t_game *g);
+void	render_map(t_game *game, int i, int j);
+
+/******************************************************************************/
+/*                               INIT_GAME                                    */
 /******************************************************************************/
 
 void	check_move(t_game *game, int x, int y);
-void	init_game(t_game *game);
 int		key_press(int keycode, t_game *game);
-void	load_textures(t_game *g);
 void	print_moves(t_game *game);
 void	put_tile(t_game *game, char tile, t_player_pos point, int img_index);
 void	put_player_tile(t_game *game);
-void	render_map(t_game *game, int i, int j);
 void	render_move(t_game *game, char current, char next, t_player *player);
 void	run_game(t_game *game);
 

@@ -38,16 +38,9 @@ MLX_INC				= -I$(MLX_DIR)
 
 # Source files (paths relative to SRC_DIR or full path)
 SRC_FILES = \
-	check_move.c \
 	init_game.c \
-	key_press.c \
 	load_textures.c \
-	print_moves.c \
-	put_game_tile.c \
-	put_player_tile.c \
 	render_map.c \
-	render_move.c \
-	run_game.c \
 	are_valid_characters.c \
 	check_args.c \
 	create_map.c \
@@ -57,6 +50,13 @@ SRC_FILES = \
 	is_valid_map.c \
 	is_valid_path.c \
 	parse_map.c \
+	check_move.c \
+	key_press.c \
+	print_moves.c \
+	put_game_tile.c \
+	put_player_tile.c \
+	render_move.c \
+	run_game.c \
 	file_in_one_line.c \
 	ft_exit_error.c \
 	ft_exit_esc.c \
@@ -70,7 +70,7 @@ SRC_FILES = \
 OBJS = $(patsubst %.c,$(OBJ_DIR)/%.o,$(SRC_FILES))
 
 # Tell make where to find source files
-VPATH = src src/parser src/utils src/game
+VPATH = src src/parser src/utils src/init_game src/run_game
 
 # **************************************************************************** #
 #                                MAKE RULES                                    #
