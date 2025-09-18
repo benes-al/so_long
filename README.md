@@ -1,4 +1,4 @@
-![My Photo](myphoto.jpg)
+![My Photo](game_art_work.jpg)
 
 ```plain text
               _                   
