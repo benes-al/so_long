@@ -1,10 +1,8 @@
 ![My Photo](game_art_work.jpg)
 
-```plain text
-              _                   
- ___  ___    | | ___  _ __   __ _ 
-/ __|/ _ \   | |/ _ \| '_ \ / _` |
-\__ \ (_) |  | | (_) | | | | (_| |
-|___/\___/___|_|\___/|_| |_|\__, |
-        |_____|             |___/ 
-```
+Long ago, when dinosaurs ruled cliffs and clouds, one raptor named Rex dreamed of reaching the top with his best friend, Spike.
+
+But just before the final ascent…
+Disaster. Their climbing gear scattered by a swarm of wild pterodactyls.
+
+Now, Rex must race across molten caves, ice-cracked ridges, and lost jungle ruins to recover every last piece.
